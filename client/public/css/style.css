@@ -1,0 +1,26 @@
+/* Ensure full height layout */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Make the footer stick to the bottom */
+main {
+    min-height: calc(100vh - 70px); /* Adjust 70px to the height of your header and footer */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer styles */
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+}
+
+/* Background color for the body */
+body {
+    background-color: #324154; /* This sets the background color for the entire body */
+}
+/* Additional responsive design adjustments */
+@media (max-width: 768px) {
+    /* Your responsive styles here */
+}
