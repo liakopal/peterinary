@@ -25,6 +25,9 @@ app.use(express.json());
 // Express session
 app.use(session({
   secret: process.env.SESSION_SECRET,
+  cookie: {
+    sameSite: 'lax', // Can be 'strict', 'lax', or 'none'
+  },
   resave: true,
   saveUninitialized: true
 }));
