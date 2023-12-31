@@ -32,17 +32,34 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// Passport middleware
-app.use(express.static('public'));
-app.use(passport.initialize());
-app.use(passport.session());
-
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 
 // EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../client/views'));
+
+// Set multiple directories for Express to look for views
+const viewsDirectories = [
+  path.join(__dirname, '..', 'client', 'views'),
+  path.join(__dirname, '..', 'client', 'views', 'pages')
+];
+app.set('views', viewsDirectories);
+;
+
+
+app.get('/about', (req, res) => {
+  const aboutContent = [
+      // Populate this array with objects containing title and text for each about section
+  ];
+  
+  res.render('about', { aboutContent: aboutContent });
+});
+
+
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use('/', require('./routes/index'));
@@ -50,6 +67,7 @@ app.use('/auth', require('./routes/auth'));      // For authentication-related r
 app.use('/dashboard', require('./routes/dashboard')); // For dashboard-related routes
 app.use('/doctor', require('./routes/doctor'));   // For doctor-specific routes
 // ... other routes based on your files
+
 
 
 // Define the port
