@@ -242,3 +242,28 @@ footer {
         margin-top: 20px; /* Add some margin on top of the button */
     }
 }
+
+/* NEWS PAGE */
+.card {
+    /* Your custom styles for cards */
+    border-color: #045B64; /* Example border color */
+}
+
+.card-title {
+    /* Styles for the card title */
+    color: #045B64; /* Example title color */
+}
+
+.card-text {
+    /* Styles for the card text */
+    color: #333; /* Example text color */
+}
+
+.btn-primary {
+    background-color: #045B64;
+    border-color: #033d49;
+}
+
+.btn-primary:hover {
+    background-color: #033d49;
+}

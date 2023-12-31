@@ -6,11 +6,14 @@ const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
 
+// Initialize Express
+const app = express();
+
+const newsRoute = require('./routes/news');
+
 // Import your database config
 const dbConfig = require('./config/database');
 
-// Initialize Express
-const app = express();
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -61,6 +64,8 @@ app.get('/about', (req, res) => {
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use('/news', newsRoute);
 
 // Routes
 app.use('/', require('./routes/index'));
