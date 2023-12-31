@@ -13,9 +13,10 @@ const dbConfig = require('./config/database');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect(dbConfig.mongoURI)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.error(err));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 
 
 // Express body parser
