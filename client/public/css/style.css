@@ -1,26 +1,244 @@
-/* Ensure full height layout */
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/* Make the footer stick to the bottom */
-main {
-    min-height: calc(100vh - 70px); /* Adjust 70px to the height of your header and footer */
+body {
     display: flex;
     flex-direction: column;
 }
 
-/* Footer styles */
-footer {
-    margin-top: auto; /* Push the footer to the bottom */
+.content {
+    flex: 1 0 auto;
 }
 
-/* Background color for the body */
-body {
-    background-color: #324154; /* This sets the background color for the entire body */
+footer {
+    flex-shrink: 0;
 }
-/* Additional responsive design adjustments */
+
+/* Custom button styles */
+.custom-btn {
+    background-color: #045B64;
+    padding: 10px 25px; /* Thinner and wider */
+    border-radius: 50px; /* Very rounded corners */
+    color: white;
+    display: block;
+    width: auto; /* Auto width for content fitting */
+    text-align: center;
+}
+
+.custom-btn:hover {
+    background-color: #033d49;
+    color: white;
+}
+
+/* Navbar brand color */
+.navbar-brand {
+    color: #1890FF;
+    margin-left: 2rem;
+}
+.collapse.navbar-collapse {
+    margin-right: 2rem;
+}
+/* Navbar item spacing */
+.navbar-nav .nav-link {
+    margin-right: 0rem; /* Adjusted right margin */
+}
+
+/* Navbar login button style */
+.nav-link.login-btn {
+    background-color: #0050b3;
+    border-radius: 30px; /* Rounded corners */
+}
+
+/* Hero section padding and content alignment */
+.hero-section {
+    padding: 4rem 0; /* Top and bottom padding */
+}
+
+.hero-content {
+    padding-bottom: 5rem;
+
+}
+
+/* Hero image adjustments */
+.hero-image img {
+    width: 70%; /* Smaller image size */
+    position: relative;
+    top: -2rem; /* Move image slightly up */
+    left: 100px;
+}
+.lead {
+    margin-top: 5rem; /* More space between paragraph and buttons */
+
+}
+/* Adjustments for the paragraph and button spacing within the hero section */
+.hero-content .lead  {
+    margin-bottom: 6rem; /* More space between paragraph and buttons */
+}
+
+/* Styles for mobile screens */
 @media (max-width: 768px) {
-    /* Your responsive styles here */
+
+    .hero-image img {
+        width: 70%; /* Smaller image size */
+        position: relative;
+        top: -2rem; /* Move image slightly up */
+        left: 100px;
+    }
+    /* Stack image above text for hero section on mobile */
+    .hero-section .row {
+        flex-direction: column-reverse;
+    }
+    .hero-content {
+        padding-bottom: 0rem;
+    }
+      /* Image styles for mobile */
+    .hero-section .hero-image img {
+        margin-bottom: 1rem; /* Add space below the image */
+    }
+  
+    /* Text and buttons spacing for mobile */
+    .hero-section .hero-content {
+        padding-top: 0rem; /* Add space above the text */
+    }
+    .lead {
+        margin-top: 0rem; /* reduce space between paragraph and buttons */
+    
+    }
+    /* Adjustments for the paragraph and button spacing within the hero section */
+    .hero-content .lead  {
+        margin-bottom: 0rem; /* reduce space between paragraph and buttons */
+    }
+  
+    /* Adjust navbar logo spacing */
+    .navbar-brand {
+        margin-right: 1rem; /* Add space to the right of the logo */
+    }
+    /* Resize navbar login button style */
+    .nav-link.login-btn {
+        width:30%;
+        text-align: center;
+        left:5px;
+        
+    }
+    .hero-section-text-white{
+        padding-top: 1rem;
+    }
+
+}
+/* Styles for mobile screens */
+@media (max-width: 600px) {
+
+    .hero-image img {
+        width: 45%; /* Smaller image size */
+        position: relative;
+        top: -2rem; /* Move image slightly up */
+        left: 100px;
+    }
+}
+
+.button-group .btn + .btn {
+    margin-left: 1rem; /* Space between buttons */
+}
+
+/* Hover and focus styles for ghost button */
+.btn-outline-primary {
+    border-color: #89DEFF;
+    color: #89DEFF; /* Blue text for ghost button */
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: #89DEFF;
+    border-color: #89DEFF;
+    color: white;
+}
+/* ABOUT PAGE */
+/* Base styles for the subscription container */
+.subscribe-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Full width of the container */
+    max-width: 1063px; /* Max width as per your spec */
+    height: 356px; /* Fixed height as per your spec */
+    margin:auto; /* Centering the div */
+    background: linear-gradient(96deg, #045B64 0%, rgba(217, 217, 217, 0) 100%);
+    border-radius: 34px;
+    margin-bottom: 30px;
+    padding:20px;
+}
+  
+/* Text styles */
+.subscribe-text {
+    width: 652px;
+    text-align: center;
+    color: #FFF4F4;
+    font-size: 57px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5.70px;
+    word-wrap: break-word;
+}
+  
+.are-you-ready {
+    width: 193px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+  
+/* Button styles */
+.get-started {
+    width: 334px;
+    height: 69px;
+    background: black;
+    border-radius: 83px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 69px; /* Align text vertically */
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: inline-block; /* Added to make it inline-flex */
+}
+.get-started:hover {
+    opacity: 0.7; /* Less visible on hover */
+}
+  
+/* Responsive adjustments for the subscription section on mobile screens */
+@media (max-width: 768px) {
+    .subscribe-container {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        width: 100%; /* Full width of the container */
+        height: auto; /* Adjust height automatically */
+        padding: 20px; /* Add padding */
+    }
+
+    .subscribe-text, .are-you-ready {
+        font-size: 28px; /* Smaller font size for text */
+        width: auto; /* Adjust width automatically */
+        letter-spacing: normal; /* Adjust letter spacing for smaller screens */
+        margin: 10px 0; /* Add some vertical margin */
+    }
+
+    .get-started {
+        width: auto; /* Adjust width automatically */
+        height: auto; /* Adjust height automatically */
+        font-size: 18px; /* Smaller font size for button text */
+        padding: 12px 24px; /* Smaller padding for the button */
+        margin-top: 20px; /* Add some margin on top of the button */
+    }
 }
