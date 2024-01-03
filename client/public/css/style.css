@@ -267,3 +267,21 @@ footer {
 .btn-primary:hover {
     background-color: #033d49;
 }
+/* DASHBOARD */
+.dashboard-container {
+    display: flex;
+}
+
+.sidebar {
+    /* Styles for sidebar */
+}
+
+.main-content {
+    /* Styles for main content */
+}
+
+.user-info {
+    /* Styles for user info section */
+}
+
+/* Other styles... */

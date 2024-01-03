@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+// Route for the home page
 router.get('/', (req, res) => {
     const services = [
         { id: 1, title: 'Clinic Services', description: 'Access a comprehensive history of your pet\'s examinations, vaccinations, and treatments.', image: 'image2.png' },
@@ -12,6 +13,24 @@ router.get('/', (req, res) => {
     res.render('pages/home', { services });
 });
 
+// Route for the about page
+router.get('/about', (req, res) => {
+    const aboutContent = [
+        // Populate this array with objects containing title and text for each about section
+    ];
+
+    res.render('pages/about', { aboutContent });
+});
+
+// Route for the registration page
+router.get('/register', (req, res) => {
+    res.render('pages/register'); // Make sure you have a register.ejs in your views/pages directory
+});
+
+// Route for the login page
+router.get('/login', (req, res) => {
+    res.render('pages/login'); // Make sure you have a login.ejs in your views/pages directory
+});
+
 
 module.exports = router;
-

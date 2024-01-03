@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+    <title>Register - Peterinary</title>
+    <!-- Add any additional CSS for styling your form if needed -->
+</head>
+<body style="background-color: #324154;">
+   
+    <%- include('../partials/navbar') %>
+    <!-- Registration Section -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card" style="border: none;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center text-white mb-4">Register for an Account</h3>
+                        <form action="/auth/register" method="POST">
+                            <!-- Name field -->
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                            </div>
+                            <!-- Email field -->
+                            <div class="mb-3">
+                                <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                            </div>
+                            <!-- Password field -->
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            </div>
+                            <!-- Confirm Password field -->
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+                            </div>
+                            <!-- Submit button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                            <!-- Login redirect -->
+                            <p class="text-center text-white mt-3">
+                                Already have an account? <a href="/login" class="text-light">Login here</a>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %> <!-- Reuse footer partial for a consistent footer -->
+
+    <!-- <script src="/js/profile.js"></script> -->
+
+
+</body>
+</html>
