@@ -1,0 +1,84 @@
+.sidebar {
+    width: 250px; /* Adjust the width as necessary */
+    background-color: white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+}
+
+.logo {
+    width: 32px; /* Adjust size as necessary */
+    height: 32px; /* Adjust size as necessary */
+    /* Other styles */
+}
+
+.logo-title {
+    font-size: 18px;
+    color: #1890FF;
+    font-weight: 500;
+    /* Other styles */
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+}
+
+.menu-item.active {
+    background: #E6F7FF;
+    box-shadow: inset -3px 0px 0px #1890FF;
+    color: #1890FF;
+}
+
+.menu-icon {
+    /* Adjust your icon styles */
+}
+
+/* Add more styles for other elements */
+:root {
+    --primary-color: #1890FF;
+    --text-primary: rgba(0, 0, 0, 0.88);
+    --text-secondary: rgba(0, 0, 0, 0.85);
+    --active-background: #E6F7FF;
+    --active-color: var(--primary-color);
+    --menu-icon-size: 14px;
+}
+
+
+
+.sidebar-logo .logo-title {
+    color: var(--primary-color);
+    /* Other styles */
+}
+
+.sidebar-menu {
+    list-style: none;
+    /* padding: 0; */
+    margin: 0;
+}
+
+.menu-item {
+    color: var(--text-primary);
+    /* Other styles */
+}
+
+.menu-item.active {
+    background-color: var(--active-background);
+    color: var(--active-color);
+    /* Other styles */
+}
+
+/* Submenu styles if you have dropdowns */

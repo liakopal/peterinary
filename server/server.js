@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const indexRoutes = require('./routes/indexRoutes');
@@ -11,11 +12,9 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const db = require('./config/db');
 
 const app = express();
- 
-
 
 // Connect to MongoDB
-mongoose.connect(db.mongoURI)
+mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error(err));
 
@@ -45,6 +44,13 @@ app.use(session({
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 app.use(dashboardRoutes);
+
+const cors = require('cors');
+app.use(cors());
+
+const petRoutes = require('./routes/petRoutes'); // Adjust the path as necessary
+app.use(petRoutes);
+
 
 const PORT = process.env.PORT || 3010;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
