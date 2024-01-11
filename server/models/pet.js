@@ -1,15 +1,22 @@
-// Pet.js (MongoDB Model)
+// Pet.js in server/models
 const mongoose = require('mongoose');
 
-const petSchema = new mongoose.Schema({
-  ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  type: { type: String, required: true },
-  name: { type: String, required: true },
-  breed: { type: String, required: true },
-  gender: { type: String, required: true },
-  image: { type: String } // This will store the image path, image is not required
+const PetSchema = new mongoose.Schema({
+  petType: String,
+  name: String,
+  breed: String,
+  gender: String,
+  birthdate: String,
+  notes: String,
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true
+  },
+  examinations: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Examination',
+  }],
 });
 
-const Pet = mongoose.model('Pet', petSchema);
-
-module.exports = Pet;
+module.exports = mongoose.model('Pet', PetSchema);

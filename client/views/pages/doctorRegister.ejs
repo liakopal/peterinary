@@ -1,3 +1,4 @@
+<!-- doctorRegister.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
                 <div class="card" style="border: none;">
                     <div class="card-body">
                         <h3 class="card-title text-center text-white mb-4">Register for an Account</h3>
-                        <form action="/auth/register" method="POST">
+                        <form action="/auth/doctorRegister" method="POST">
                             <!-- Name field -->
                             <div class="mb-3">
                                 <input type="text" class="form-control" name="username" placeholder="Username" required>
@@ -34,10 +35,10 @@
                             </div>
                             <!-- Submit button -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-primary">Register as Doctor</button>
                             </div>
                             <!-- Login redirect -->
-                            <p class="text-center text-white mt-3">
+                            <p class="text-center text-black mt-3">
                                 Already have an account? <a href="/login" class="text-dark">Login here</a>.
                             </p>
                         </form>
@@ -49,8 +50,9 @@
 
     <%- include('../partials/footer') %> <!-- Reuse footer partial for a consistent footer -->
 
-    <!-- <script src="/js/profile.js"></script> -->
-
-
+    <!-- Include Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+// // userRoutes.js
+// const express = require('express');
+// const router = express.Router();
+
+// // Replace with your actual controllers and middleware
+// const { getUserProfile, updateUserProfile } = require('../controllers/authController');
+
+// // GET request to fetch the user profile
+// router.get('/profile', getUserProfile);
+
+// // POST request to update the user profile
+// router.post('/profile', updateUserProfile);
+
+// module.exports = router;
