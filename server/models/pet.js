@@ -10,7 +10,7 @@ const PetSchema = new mongoose.Schema({
   notes: String,
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: 'User',
     required: true
   },
   examinations: [{

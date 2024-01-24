@@ -1,42 +1,56 @@
-import React, { createContext, useState, useEffect, useContext  } from 'react';
-
-export const UserContext = createContext(null);
+// UserContext.js
+import React, { createContext, useState, useEffect } from 'react';
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    const token = localStorage.getItem('token');
-    const role = localStorage.getItem('userRole');
-    return token ? { token, role } : null;
-  });
-  
-  const [isAuthenticated, setIsAuthenticated] = useState(!!user);
-  const [userRole, setUserRole] = useState(user?.role || '');
+  const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   // Check if user info exists in local storage
+  //   const storedUser = localStorage.getItem('user');
+  //   if (storedUser) {
+  //     console.log('Found user in local storage, parsing...');
+  //     //const parsedUser = JSON.parse(storedUser);
+  //     console.log('User loaded from local storage:', storedUser);
+  //     setUser(storedUser);
+  //   }
+  // }, []);
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
-    setIsAuthenticated(!!user);
-    setUserRole(user?.role || '');
-  }, [user]);
-
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    const parsedUser = JSON.parse(storedUser); // Parse the user from storage
+    console.log('User loaded from local storage:', parsedUser);
+    setUser(parsedUser);
+  }
+}, []);
+  
   const login = (userData) => {
+    console.log('User logging in:', userData);
+    localStorage.setItem('user', JSON.stringify({
+      _id: userData._id,
+      username: userData.username,
+      role: userData.role,
+    }));
+    // Update the user state with the new user data
+    setUser({
+      _id: userData._id,
+      username: userData.username,
+      role: userData.role,
+    });
     setUser(userData);
-    setIsAuthenticated(true);
-    setUserRole(userData.role);
-  };
+  };  
 
   const logout = () => {
+    console.log('User logging out:', user);
     localStorage.removeItem('user');
     setUser(null);
-    setIsAuthenticated(false);
-    setUserRole('');
   };
 
   return (
-    <UserContext.Provider value={{ user, isAuthenticated, userRole, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
   );
 };
 
-// Uncomment and use this if needed
- export const useUserContext = () => useContext(UserContext);
+export const UserContext = createContext(null);

@@ -1,60 +1,58 @@
-// EditPet.jsx
-import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, message as antdMessage } from 'antd';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { UserContext } from './UserContext'; // Import UserContext
 
 const EditPet = () => {
-  const [petData, setPetData] = useState({});
-  const { petId } = useParams(); // To access the dynamic segment in the URL
-  const navigate = useNavigate(); // To navigate user after form submission
+  const { petId } = useParams();
+  const { user } = useContext(UserContext); // Use UserContext to access the logged-in user
+  const [pet, setPet] = useState(null);
 
   useEffect(() => {
-    // Replace this URL with the correct endpoint to fetch a specific pet
-    fetch(`http://your-api-endpoint/pets/${petId}`)
-      .then(response => response.json())
-      .then(data => setPetData(data))
-      .catch(error => antdMessage.error('Failed to fetch pet data.'));
-  }, [petId]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPetData({ ...petData, [name]: value });
-  };
-
-  const handleSubmit = () => {
-    // Logic to handle form submission, likely sending the updated pet data to the server
-    // Replace this URL with the correct endpoint
-    fetch(`http://your-api-endpoint/pets/${petId}`, {
-      method: 'PUT', // or 'POST' depending on your API
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(petData),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+    const fetchPetData = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found in localStorage');
+        return;
       }
-      return response.json();
-    })
-    .then(() => {
-      antdMessage.success('Pet updated successfully');
-      navigate('/some-route'); // Redirect to the desired route after successful update
-    })
-    .catch(error => {
-      antdMessage.error('Failed to update pet');
-      console.error('Error updating pet:', error);
-    });
-  };
+
+      try {
+        const response = await fetch(`http://localhost:3010/api/pet/${petId}`, {
+          method: 'GET',
+          headers: { 'Authorization': `Bearer ${token}` },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (data && user && data.owner === user._id) { // Check if the logged-in user is the owner of the pet
+          setPet(data);
+        } else {
+          console.error('You are not authorized to view this pet');
+          // Handle unauthorized access here
+        }
+      } catch (error) {
+        console.error('Failed to fetch pet data:', error);
+      }
+    };
+
+    fetchPetData();
+  }, [petId, user]); // Include user in the dependency array
+
+  if (!pet) {
+    return <div>Loading pet information...</div>;
+  }
 
   return (
-    <Form form={petData} layout="vertical" onFinish={handleSubmit}>
-      <Form.Item name="name" label="Pet Name" rules={[{ required: true }]}>
-        <Input name="name" value={petData.name} onChange={handleInputChange} />
-      </Form.Item>
-      {/* Add other Form.Item and Input components for the rest of the pet data fields */}
-      <Form.Item>
-        <Button type="primary" htmlType="submit">Update Pet</Button>
-      </Form.Item>
-    </Form>
+    <div>
+      <h1>{pet.name}</h1>
+      <p>Breed: {pet.breed}</p>
+      <p>Gender: {pet.gender}</p>
+      <p>Birthdate: {pet.birthdate || 'Not specified'}</p>
+      <p>Notes: {pet.notes}</p>
+      {/* Additional pet details */}
+    </div>
   );
 };
 

@@ -1,83 +1,74 @@
-// PetListTable.jsx in src/components
+// PetListTable.jsx
 import React from 'react';
-import { Table, Button, Upload } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Table, Dropdown, Menu, Button } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 
-const PetListTable = ({ pets, onFileUpload, showUploadButton, onEditPet  }) => {
-  // Function to calculate age from birthdate
-  const calculateAge = (birthdate) => {
-    const birthDate = new Date(birthdate);
-    const difference = Date.now() - birthDate.getTime();
-    const ageDate = new Date(difference);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  };
+const PetListTable = ({ examinations }) => {
+  // Helper function to create a menu for file downloads
+  const createFileMenu = (files) => (
+    <Menu>
+      {files.map((file, index) => (
+        <Menu.Item key={index}>
+          <a href={`http://localhost:3010/uploads/${file}`} download>
+            {`File ${index + 1}`}
+          </a>
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Pet Name',
+      dataIndex: ['pet', 'name'],
+      key: 'petName',
     },
     {
-      title: 'Breed',
-      dataIndex: 'breed',
-      key: 'breed',
+      title: 'Added By',
+      dataIndex: ['addedBy', 'username'],
+      key: 'addedByUsername',
     },
     {
-      title: 'Age',
-      dataIndex: 'birthdate',
-      key: 'age',
-      render: birthdate => `${calculateAge(birthdate)} years`,
+      title: 'Details',
+      dataIndex: 'details',
+      key: 'details',
     },
     {
-      title: 'Examinations',
-      dataIndex: 'examinations',
-      key: 'examinations',
-      render: (text, record) => (
-        <div>
-          {record.examinations.map((file, index) => (
-            <a key={index} href={`http://localhost:3010/uploads/${file}`} download>
-              Examination {index + 1} - {new Date(file.uploadDate).toLocaleDateString()}
-            </a>
-          ))}
-          {showUploadButton && (
-            <Upload
-              beforeUpload={(file) => {
-                onFileUpload(file, record.key);
-                return false; // Prevent default upload behavior
-              }}
-              showUploadList={false}
-            >
-              <Button icon={<UploadOutlined />}>Upload File</Button>
-            </Upload>
-          )}
-        </div>
+      title: 'Files',
+      key: 'files',
+      render: (_, record) => (
+        record.files && record.files.length > 0 ? (
+          <Dropdown overlay={createFileMenu(record.files)}>
+            <Button>
+              Files <DownOutlined />
+            </Button>
+          </Dropdown>
+        ) : 'No files'
       ),
     },
+    {
+      title: 'Date',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: createdAt => (new Date(createdAt)).toLocaleDateString(),
+    },
+    // Add more columns as needed
   ];
 
-  const dataSource = pets.map(pet => ({
-    key: pet._id,
-    name: pet.name,
-    breed: pet.breed,
-    birthdate: pet.birthdate,
-    examinations: pet.examinations.map(exam => ({
-      ...exam,
-      uploadDate: exam.uploadDate || new Date(), // Assuming each exam object has an uploadDate field
-    })),
+  const dataSource = examinations.map(exam => ({
+    key: exam._id,
+    pet: exam.pet,
+    addedBy: exam.addedBy,
+    details: exam.details || 'No details provided',
+    createdAt: exam.createdAt,
+    files: exam.files,
   }));
 
-  columns.push({
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Button onClick={() => onEditPet(record.key)}>Edit</Button>
-    ),
-  });
-  
-
   return (
-    <Table dataSource={dataSource} />
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+    />
   );
 };
 

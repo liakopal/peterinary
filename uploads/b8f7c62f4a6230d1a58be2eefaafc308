@@ -1,0 +1,376 @@
+import React from "react";
+import { Button } from "antd";
+import { FormItemInput } from "antd";
+import { FormItemRadio } from "antd";
+import { FormItemSelect } from "antd";
+import { InlineMenuItem } from "antd";
+import { InlineMenuItemRd } from "antd";
+import { InlineMenuItemTop } from "antd";
+import { LayoutblocksBase } from "antd";
+import { MenuFold } from "antd";
+import { MenuIconAntMenu } from "antd";
+import { MenuLegacy } from "antd";
+import { RequiredTrueWrapper } from "antd";
+import { Result } from "antd";
+import { Upload } from "antd";
+import { UploadedFalseTypeWrapper } from "antd";
+
+export const UserAddPet = () => {
+  return (
+    <div className="user-add-pet">
+      <div className="overlap-wrapper">
+        <div className="overlap">
+          <div className="overlap-2">
+            <div className="sider-default">
+              <div className="menu-logo">
+                <div className="logo">
+                  <img className="frame-2" alt="Frame" src="frame.svg" />
+                  <div className="ant-design-pro">Peterinary</div>
+                </div>
+                <div className="menu-2">
+                  <div className="div-2">
+                    <div className="parent-2">
+                      <div className="inner-wrapper-2">
+                        <div className="title-wrapper-5">
+                          <div className="icon-instance-node">
+                            <img className="icon-5" alt="Icon" src="icon-9.svg" />
+                          </div>
+                          <div className="title-14">Dashboard</div>
+                        </div>
+                        <MenuIconAntMenu className="design-component-instance-node-2" union="union-5.svg" />
+                      </div>
+                    </div>
+                    <div className="div-2">
+                      <InlineMenuItem
+                        className="design-component-instance-node-3"
+                        open={false}
+                        selected={false}
+                        submenu={false}
+                        text="Search"
+                      />
+                      <div className="div-2">
+                        <div className="parent-3">
+                          <div className="inner-wrapper-2">
+                            <div className="overlap-group-2">
+                              <div className="element-level-title-2">Workplace</div>
+                              <MenuIconAntMenu className="menu-icon-ant-menu-instance" union="union-4.svg" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="div-2">
+                          <InlineMenuItemRd className="inline-menu-item-instance" selected text="Add Pets" />
+                          <InlineMenuItemRd className="inline-menu-item-instance" selected={false} text="Edit Pets" />
+                          <InlineMenuItemRd className="inline-menu-item-instance" selected={false} text="Option 3" />
+                          <InlineMenuItemRd className="inline-menu-item-instance" selected={false} text="Option 4" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <InlineMenuItemTop
+                    className="design-component-instance-node-3"
+                    icon="icon-10.svg"
+                    iconClassName="inline-menu-item-top-instance"
+                    iconWrapperClassName="inline-menu-item-top-level-legacy"
+                    open={false}
+                    selected={false}
+                    submenu={false}
+                    text="Lost and Found"
+                  />
+                  <InlineMenuItemTop
+                    className="design-component-instance-node-3"
+                    iconClassNameOverride="inline-menu-item-top-instance"
+                    iconWrapperClassNameOverride="inline-menu-item-top-level-legacy"
+                    img="icon-11.svg"
+                    menuIconAntMenuWrapperMenuIconAntMenuClassName="design-component-instance-node-2"
+                    menuIconAntMenuWrapperUnion="union-6.svg"
+                    open={false}
+                    selected={false}
+                    submenu
+                    text="Pet Owner Profile"
+                    titleClassName="inline-menu-item-top-level-legacy-instance"
+                  />
+                  <InlineMenuItemTop
+                    className="design-component-instance-node-3"
+                    iconClassNameOverride="inline-menu-item-top-instance"
+                    iconWrapperClassNameOverride="inline-menu-item-top-level-legacy"
+                    img="icon-12.svg"
+                    menuIconAntMenuWrapperMenuIconAntMenuClassName="design-component-instance-node-2"
+                    menuIconAntMenuWrapperUnion="union-7.svg"
+                    open={false}
+                    selected={false}
+                    submenu
+                    text="Book Appointment"
+                    titleClassName="inline-menu-item-top-level-legacy-instance"
+                  />
+                  <InlineMenuItemTop
+                    className="design-component-instance-node-3"
+                    iconClassNameOverride="inline-menu-item-top-2"
+                    iconWrapperClassNameOverride="inline-menu-item-top-level-legacy"
+                    img="icon-13.svg"
+                    menuIconAntMenuWrapperMenuIconAntMenuClassName="design-component-instance-node-2"
+                    menuIconAntMenuWrapperUnion="union-8.svg"
+                    open={false}
+                    selected={false}
+                    submenu
+                    text="Messages"
+                    titleClassName="inline-menu-item-top-level-legacy-instance"
+                  />
+                  <InlineMenuItemTop
+                    className="design-component-instance-node-3"
+                    iconClassNameOverride="inline-menu-item-top-3"
+                    iconWrapperClassNameOverride="inline-menu-item-top-level-legacy"
+                    img="icon-14.svg"
+                    menuIconAntMenuWrapperMenuIconAntMenuClassName="design-component-instance-node-2"
+                    menuIconAntMenuWrapperUnion="union-9.svg"
+                    open={false}
+                    selected={false}
+                    submenu
+                    text="Account"
+                    titleClassName="inline-menu-item-top-level-legacy-instance"
+                  />
+                  <InlineMenuItemTop
+                    className="design-component-instance-node-3"
+                    iconClassNameOverride="inline-menu-item-top-instance"
+                    img="icon-15.svg"
+                    menuIconAntMenuWrapperMenuIconAntMenuClassName="design-component-instance-node-2"
+                    menuIconAntMenuWrapperUnion="union-10.svg"
+                    open={false}
+                    selected={false}
+                    submenu
+                    text="Pets Health"
+                    titleClassName="inline-menu-item-top-level-legacy-instance"
+                  />
+                </div>
+              </div>
+              <div className="sider-trigger">
+                <div className="inner-wrapper-2">
+                  <MenuFold className="menu-fold" />
+                </div>
+              </div>
+            </div>
+            <div className="global-header-front">
+              <LayoutblocksBase
+                className="layoutblocks-base-instance"
+                labelClassName="layoutblocks-base-2"
+                text="Logo"
+              />
+              <div className="buttons">
+                <MenuLegacy
+                  className="menu-legacy-instance"
+                  horizontalSubmenuBalancer="balancer-3.svg"
+                  horizontalSubmenuBalancerClassName="menu-legacy-5"
+                  horizontalSubmenuDisabled={false}
+                  horizontalSubmenuDivClassName="menu-legacy-6"
+                  horizontalSubmenuIconFalseSelectedClassName="menu-legacy-7"
+                  horizontalSubmenuIconFalseSelectedClassNameOverride="menu-legacy-7"
+                  horizontalSubmenuIconTrueSelectedClassName="menu-legacy-3"
+                  horizontalSubmenuIconTrueSelectedClassNameOverride="menu-legacy-7"
+                  horizontalSubmenuInk="ink-3.svg"
+                  horizontalSubmenuInkClassName="menu-legacy-2"
+                  horizontalSubmenuText="Home"
+                  horizontalSubmenuText1="About"
+                  horizontalSubmenuText2="Services"
+                  horizontalSubmenuText3="News"
+                  horizontalSubmenuTitleClassName="menu-legacy-4"
+                  horizontalSubmenuTitleClassNameOverride="menu-legacy-6"
+                  horizontalSubmenuTitleWrapperClassName="menu-legacy-6"
+                  horizontalSubmenuVisible={false}
+                  horizontalSubmenuVisible1={false}
+                  horizontalSubmenuVisible2={false}
+                  inlineIndent="n-a"
+                  mode="horizontal"
+                />
+                <div className="user-2">
+                  <div className="avatar-image" />
+                  <div className="never-sa">Harry Vangas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="overlap-3">
+            <div className="field-type-wrapper">
+              <div className="field-type">
+                <FormItemRadio
+                  className="form-item-radio-instance"
+                  helpText
+                  optional={false}
+                  radioGroupComponentsRadioCheck
+                  radioGroupComponentsRadioCheck1={false}
+                  radioGroupComponentsRadioText="Cat"
+                  radioGroupComponentsRadioText1="Dog"
+                  radioGroupThreeItems={false}
+                  radioGroupTwoItems
+                  required
+                  text="Pet"
+                  text1="Dog or Cat Parent?"
+                  tooltip={false}
+                />
+                <FormItemInput
+                  className="form-item-input-instance"
+                  helpText
+                  optional={false}
+                  required
+                  status="normal"
+                  text="Name"
+                  text1="How do you call your pet?"
+                  tooltip={false}
+                />
+                <FormItemSelect
+                  className="form-item-select-instance"
+                  helpText
+                  optional={false}
+                  required
+                  selectIcon="icon-8.svg"
+                  selectText="Jack"
+                  status="normal"
+                  text="Breed"
+                  text1=""
+                  tooltip={false}
+                />
+                <RequiredTrueWrapper
+                  className="form-item-radio-button"
+                  divClassName="form-item-radio-button-instance"
+                  radioButtonGroupFocused
+                  radioButtonGroupItems="two"
+                  radioButtonGroupSizeMediumPositionWrapperBoxClassName="form-item-radio-2"
+                  radioButtonGroupSizeMediumPositionWrapperBoxClassNameOverride="form-item-radio-3"
+                  radioButtonGroupSizeMediumPositionWrapperHaloClassName="form-item-radio-3"
+                  radioButtonGroupSizeMediumPositionWrapperHaloClassNameOverride="form-item-radio-4"
+                  radioButtonGroupSizeMediumPositionWrapperText="Female"
+                  radioButtonGroupSizeMediumPositionWrapperText1="Male"
+                  required
+                />
+                <FormItemRadio
+                  className="form-item-radio-5"
+                  helpText={false}
+                  optional={false}
+                  radioGroupComponentsRadioCheck2={false}
+                  radioGroupComponentsRadioCheck3
+                  radioGroupComponentsRadioText2="Cat"
+                  radioGroupComponentsRadioText3="Dog"
+                  radioGroupThreeItems1={false}
+                  radioGroupTwoItems1
+                  required
+                  text="Pet"
+                  tooltip={false}
+                />
+                <UploadedFalseTypeWrapper
+                  buttonMedium={<Upload className="icon-instance-node" />}
+                  buttonMediumText="Upload Image"
+                  className="upload-2"
+                  type="file"
+                  uploaded={false}
+                />
+                <Button
+                  className="button-2"
+                  danger={false}
+                  ghost={false}
+                  shape="standard"
+                  size="medium"
+                  stateProp="normal"
+                  title="Submit"
+                  type="primary"
+                />
+              </div>
+            </div>
+            <Result
+              className="result-instance"
+              extra
+              status="success"
+              subtitle={false}
+              text="Pet Added"
+              visible={false}
+            />
+            <div className="form-2">
+              <div className="field-type">
+                <FormItemRadio
+                  className="form-item-radio-instance"
+                  helpText
+                  optional={false}
+                  radioGroupComponentsRadioCheck={false}
+                  radioGroupComponentsRadioCheck1
+                  radioGroupComponentsRadioText="Cat"
+                  radioGroupComponentsRadioText1="Dog"
+                  radioGroupThreeItems={false}
+                  radioGroupTwoItems
+                  required
+                  text="Pet"
+                  text1="Dog or Cat Parent?"
+                  tooltip={false}
+                />
+                <FormItemInput
+                  className="form-item-input-instance"
+                  helpText
+                  optional={false}
+                  required
+                  status="normal"
+                  text="Name"
+                  text1="How do you call your pet?"
+                  tooltip={false}
+                />
+                <FormItemSelect
+                  className="form-item-select-instance"
+                  helpText
+                  optional={false}
+                  required
+                  selectIcon="icon-7.svg"
+                  selectText="Lucy"
+                  status="normal"
+                  text="Breed"
+                  text1=""
+                  tooltip={false}
+                />
+                <RequiredTrueWrapper
+                  className="form-item-radio-7"
+                  divClassName="form-item-radio-button-instance"
+                  radioButtonGroupFocused
+                  radioButtonGroupItems="two"
+                  radioButtonGroupSelected="two"
+                  radioButtonGroupSizeMediumPositionWrapperBoxClassName1="form-item-radio-3"
+                  radioButtonGroupSizeMediumPositionWrapperBoxClassName2="form-item-radio-2"
+                  radioButtonGroupSizeMediumPositionWrapperDivClassName="form-item-radio-6"
+                  radioButtonGroupSizeMediumPositionWrapperDivClassNameOverride="form-item-radio-2"
+                  radioButtonGroupSizeMediumPositionWrapperText2="Male"
+                  radioButtonGroupSizeMediumPositionWrapperText3="Female"
+                  required
+                />
+                <FormItemRadio
+                  className="form-item-radio-5"
+                  helpText={false}
+                  optional={false}
+                  radioGroupComponentsRadioCheck2={false}
+                  radioGroupComponentsRadioCheck3
+                  radioGroupComponentsRadioText2="Cat"
+                  radioGroupComponentsRadioText3="Dog"
+                  radioGroupThreeItems1={false}
+                  radioGroupTwoItems1
+                  required
+                  text="Pet"
+                  tooltip={false}
+                />
+                <UploadedFalseTypeWrapper
+                  buttonMedium={<Upload className="icon-instance-node" />}
+                  buttonMediumButtonMediumClassName="upload-3"
+                  buttonMediumText="Upload Image"
+                  className="upload-2"
+                  type="file"
+                  uploaded={false}
+                />
+                <Button
+                  className="button-2"
+                  danger={false}
+                  ghost={false}
+                  shape="standard"
+                  size="medium"
+                  stateProp="normal"
+                  title="Submit"
+                  type="primary"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

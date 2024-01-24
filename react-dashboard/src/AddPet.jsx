@@ -7,6 +7,15 @@ import { UserContext } from './UserContext';
 const { Option } = Select;
 
 const AddPet = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+  
+  console.log('AddPet component rendered');
+  // Additional logs to check local storage and user context
+  
+  console.log('User context:', user);
+
+
   const [petData, setPetData] = useState({
     petType: '',
     name: '',
@@ -15,9 +24,6 @@ const AddPet = () => {
     birthdate: '',
     notes: '',
   });
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -27,30 +33,57 @@ const AddPet = () => {
   const handleDateChange = (date, dateString) => {
     setPetData({ ...petData, birthdate: dateString });
   };
+  
+  const showSuccessAndNavigate = (petId) => {
+    message.success('Pet added successfully!', 5, onclose => {
+      navigate(`/edit-pet/${petId}`);
+    });
+  };
 
   const handleSubmit = () => {
+    console.log('Handle submit invoked');
+
+    // Make sure user context is available and user ID is not undefined
+    if (!user || !user._id) {
+      console.error('User ID not found');
+      message.error('Error: Unable to determine owner of the pet.');
+      return;
+    }
+    const token = localStorage.getItem('token'); // Retrieve the token
+    console.log('Token at the time of submission:', token); // Log the token
+
+    // Log the user context and local storage token before checking for their presence
+    console.log('User context at submit:', user);
+
     const petDataWithOwner = { ...petData, owner: user._id };
     console.log("Submitting pet data:", petDataWithOwner); // Log pet data being submitted
-  
-    fetch('http://localhost:3010/api/pets', {
+    console.log("Authorization header:", `Bearer ${token}`);
+    console.log('Local storage token:', localStorage.getItem('token'));
+    fetch('http://localhost:3010/api/pet', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
+      //credentials: 'include',
       body: JSON.stringify(petDataWithOwner),
     })
     .then(response => {
       console.log("Server response:", response); // Log server response
-      if (response.ok) {
-        return response.json();
+      if (!response.ok) {
+        // If the response is not OK, log the status and throw an error
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      throw new Error('Network response was not ok.');
+      return response.json();
     })
     .then(data => {
-      console.log('Success:', data);
-      message.success('Pet added successfully!');
-      navigate('/success');
+      if(data.petId) {
+        showSuccessAndNavigate(data.petId);
+      } else {
+        console.error('Pet ID not returned from server');
+      }
     })
+    
     .catch((error) => {
       console.error('Error:', error);
       message.error('There was a problem adding your pet.');

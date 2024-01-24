@@ -2,7 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+
+router.get('/news', async (req, res) => {
     try {
         // Fetching news about dogs
         const newsResponse = await axios.get('https://newsapi.org/v2/everything', {
