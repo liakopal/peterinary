@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+    <style>
+        .main-content {
+            background-color: #324154; /* Your desired background color */
+            min-height: calc(100vh - 120px); /* Adjust this value based on your navbar and footer */
+            padding-top: 60px; /* Space for the top, adjust as needed */
+            padding-bottom: 60px; /* Space for the bottom, adjust as needed */
+        }
+        /* Additional custom styles can go here */
+    </style>
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+
+    <div class="main-content">
+        <!-- Flash Messages -->
+        <% if(success_msg.length > 0) { %>
+            <div class="alert alert-success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+
+        <% if(error_msg.length > 0) { %>
+            <div class="alert alert-danger">
+                <%= error_msg %>
+            </div>
+        <% } %>
+        
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <div class="card-body">
+                                <h3 class="card-title" style="color: #045B64;">Contact Us</h3>
+                                <form action="contact/submit-form" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message:</label>
+                                        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Place other sections of your main content here -->
+        <!-- For example, a section for about us, services, testimonials, etc. -->
+
+    </div>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

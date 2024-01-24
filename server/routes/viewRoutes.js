@@ -1,6 +1,8 @@
 //routes/viewRoutes.js
 const express = require('express');
 const router = express.Router();
+const ContactMessage = require('../models/contactMessage');
+
 
 // Serve EJS-based pages
 // Route for the about page
@@ -41,16 +43,35 @@ router.get('/services', (req, res) => {
     res.render('pages/under-construction');
 });
 
-// Route for News page
-router.get('/news', (req, res) => {
-    res.render('pages/under-construction');
+router.post('/contact/submit-form', async (req, res) => {
+    console.log("POST /contact called");
+    try {
+        const newMessage = new ContactMessage({
+            name: req.body.name,
+            email: req.body.email,
+            message: req.body.message
+        });
+        await newMessage.save();
+        req.flash('success', 'Thank you for your message! We will get back to you soon.');
+        res.redirect('/contact');
+    } catch (error) {
+        console.error("Error in POST /contact:", error);
+        req.flash('error', 'An error occurred while sending your message.');
+        res.redirect('/contact');
+    }
 });
+
+
+
 
 // Route for Contact page
 router.get('/contact', (req, res) => {
-    res.render('pages/under-construction');
+    console.log("GET /contact called");
+    res.render('pages/contact', {
+        success_msg: req.flash('success'), 
+        error_msg: req.flash('error')
+    });
 });
-
 
 
 

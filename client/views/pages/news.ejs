@@ -2,29 +2,31 @@
 <html lang="en">
 <head>
     <%- include('../partials/header') %>
-    <title>News and Veterinary Reports</title>
+    <title>News About Pets and Animals</title>
 </head>
 <body>
-    <%- include('../partials/navbar') %>
-
+    <%- include('../partials/navbar'); %>
     <div class="container mt-4">
-        <h1>Latest News on Dogs</h1>
-        <!-- News articles display -->
-        <% articles.forEach(article => { %>
-            <!-- Display each article -->
-        <% }) %>
-
-        <h2 class="mt-5">Veterinary Adverse Event Reports</h2>
-        <!-- Veterinary reports display -->
-        <% if (veterinaryReports && veterinaryReports.length > 0) { %>
-            <% veterinaryReports.forEach(report => { %>
-                <!-- Display each veterinary report -->
-            <% }) %>
+        <h1>News About Pets and Animals</h1>
+        <% if (articles.length > 0) { %>
+            <div class="row">
+                <% articles.forEach(function(article) { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="<%= article.urlToImage %>" class="card-img-top" alt="<%= article.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= article.title %></h5>
+                                <p class="card-text"><%= article.description %></p>
+                                <a href="<%= article.url %>" class="btn btn-primary">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
         <% } else { %>
-            <p>No adverse event reports found.</p>
+            <p class="text-center"><%= error %></p>
         <% } %>
     </div>
-
     <%- include('../partials/footer') %>
 </body>
 </html>
